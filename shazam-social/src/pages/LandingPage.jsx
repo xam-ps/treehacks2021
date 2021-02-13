@@ -4,12 +4,12 @@ import logoPng from "../assets/img/logo.png";
 import styles from "./LandingPage.module.scss";
 
 const LandingPage = () => (
-  <CenteredContentWrapper>
-    <div className={styles.LandingPage}>
+  <div className={styles.LandingPage}>
+    <CenteredContentWrapper>
       <h1> DiMuTo </h1>
       <img className={styles.logo} src={logoPng} alt="" />
-    </div>
-  </CenteredContentWrapper>
+    </CenteredContentWrapper>
+  </div>
 );
 
 export default LandingPage;
