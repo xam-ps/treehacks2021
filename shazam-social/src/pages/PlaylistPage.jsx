@@ -9,7 +9,7 @@ import avatarJpg from "../assets/img/avatar.jpg"
 
 const data = [
   {
-    title: "Ant Design Title 1",
+    title: "Jungle",
     artist: "Tash Sultana",
     firstDate: "01/12/2021",
     avatar: avatarJpg,
@@ -33,7 +33,7 @@ const data = [
     title: "Ant Design Title 4 Ant Design Title 4 Ant Design Title 4 Ant Design Title 4",
     artist: "Tash Sultana Tash Sultana Tash Sultana Tash Sultana Tash Sultana",
     firstDate: "01/12/2021",
-    avatar: avatarJpg,
+    avatar: null,
     imgSrc: albumCoverJpg
   },
 ];
@@ -42,7 +42,7 @@ const PlaylistPage = () => {
   const history = useHistory();
   return (
     <div className={styles.PlaylistPage}>
-      <CenteredContentWrapper fullscreen={true}>
+      <CenteredContentWrapper fullscreen={true} maxWidth={500}>
         <h1> Shared Playlist </h1>
         <List
           itemLayout="horizontal"
