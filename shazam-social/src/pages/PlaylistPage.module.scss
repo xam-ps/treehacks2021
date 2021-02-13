@@ -12,5 +12,15 @@
             color: $globalText;
             margin: 16px 0;
         }
+
+        .scrollContainer {
+            height: calc(100% - 30px);
+            overflow: scroll;
+            padding-bottom: 100px;
+
+            ul {
+                margin-bottom: 70px;
+            }
+        }
     }
 }
