@@ -3,7 +3,7 @@ import styles from './CenteredContentWrapper.module.scss';
 
 class CenteredContentWrapper extends React.Component {
   static defaultProps = {
-    maxWidth: 720,
+    maxWidth: 560,
     fullscreen: false
   };
 
