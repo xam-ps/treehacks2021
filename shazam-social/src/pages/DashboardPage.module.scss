@@ -1,0 +1,28 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .DashboardPage {
+        background-color: $globalBg;
+        color: $globalText;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+
+        h1 {
+            margin-top: 16px;
+        }
+
+        .recognizeMusicButton {
+            box-sizing: border-box;
+            height: 250px;
+            width: 250px;
+            margin: 25vh auto 0;
+            border-radius: 500px;
+            background: white;
+            text-align: center;
+            color: $globalBg;
+            padding-top: 115px;
+        }
+    }
+}
