@@ -1,6 +1,9 @@
 import React from "react";
-import "./index.css";
+import "./index.scss";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import LandingPage from "./pages/LandingPage";
+import SignupPage from "./pages/SignupPage";
 
 export default function App() {
 	return (
@@ -19,26 +22,10 @@ export default function App() {
 						</li>
 					</ul>
 				</nav>
-				<Route path="/" exact component={Home} />
-				<Route path="/signup" exact component={Signup} />
-				<Route path="/login" exact component={Login} />
+				<Route path="/" exact component={LandingPage} />
+				<Route path="/signup" exact component={SignupPage} />
+				<Route path="/login" exact component={LoginPage} />
 			</main>
 		</Router>
 	);
 }
-
-const Home = () => (
-	<React.Fragment>
-		<h1> Home </h1>
-	</React.Fragment>
-);
-const Signup = () => (
-	<React.Fragment>
-		<h1> Signup </h1>
-	</React.Fragment>
-);
-const Login = () => (
-	<React.Fragment>
-		<h1> Login </h1>
-	</React.Fragment>
-);
