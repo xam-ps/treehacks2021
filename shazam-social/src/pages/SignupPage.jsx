@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 
 const SignupPage = () => (
-	<React.Fragment>
-		<h1> Signup </h1>
-	</React.Fragment>
+  <CenteredContentWrapper>
+    <h1> Signup </h1>
+  </CenteredContentWrapper>
 );
 
 export default SignupPage;
