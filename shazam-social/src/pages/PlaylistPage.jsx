@@ -6,6 +6,7 @@ import PlaylistEntry from "../modules/PlaylistEntry";
 import styles from "./PlaylistPage.module.scss";
 import albumCoverJpg from "../assets/img/cover.jpg"
 import avatarJpg from "../assets/img/avatar.jpg"
+import Navigation from "../modules/Navigation";
 
 const data = [
   {
@@ -42,7 +43,7 @@ const PlaylistPage = () => {
   const history = useHistory();
   return (
     <div className={styles.PlaylistPage}>
-      <CenteredContentWrapper fullscreen={true} maxWidth={500}>
+      <CenteredContentWrapper fullscreen={true}>
         <h1> Shared Playlist </h1>
         <List
           itemLayout="horizontal"
@@ -52,15 +53,8 @@ const PlaylistPage = () => {
               <PlaylistEntry data={item}/>
           )}
         />
-        <Button
-          className={styles.playlistButton}
-          onClick={() => {
-            history.push("/dashboard");
-          }}
-        >
-          Dashboard
-        </Button>
       </CenteredContentWrapper>
+      <Navigation />
     </div>
   );
 };

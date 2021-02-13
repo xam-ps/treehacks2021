@@ -1,0 +1,67 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .navigation {
+        box-sizing: border-box;
+        width: calc(100% - 20px);
+        background: $lightYellow;
+        padding: 10px 26px;
+        margin: 5px;
+        border-radius: 5px;
+        position: fixed;
+        bottom: 0;
+        left: calc(50% - 5px);
+        transform: translateX(-50%);
+        max-width: 400px;
+
+        > div {
+            width: 248px;
+            margin: 0 auto;
+        }
+
+        Button {
+            margin: 0 14px;
+            padding: 0;
+            color: $globalBg;
+            img{
+                height: 30px;
+            }
+            p {
+                display: none;
+            }
+        }
+    }
+}
+
+@include tablet-landscape-up {
+    .navigation {
+        box-sizing: border-box;
+        width: 120px;
+        background: $lightYellow;
+        padding: 10px 10px;
+        top: 60px;
+        bottom: auto;
+        transform: translateX(calc(-50% + -380px));
+
+        > div {
+            width: auto;
+            margin: 0 0;
+        }
+
+        Button {
+            display: block;
+            margin: 0 auto;
+            height: 80px;
+            img{
+                height: 32px;
+            }
+
+            p {
+                text-align: center;
+                display: block;
+                margin: -5px 0 20px;
+            }
+        }
+    }
+}
