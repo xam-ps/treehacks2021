@@ -1,27 +1,26 @@
 import { Button } from "antd";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import CenteredContentWrapper from "../modules/CenteredContentWrapper";
-import styles from "./DashboardPage.module.scss";
-import { useHistory } from "react-router";
+import styles from "./PlaylistPage.module.scss";
 
-const DashboardPage = () => {
+const PlaylistPage = () => {
   const history = useHistory();
   return (
-    <div className={styles.DashboardPage}>
+    <div className={styles.PlaylistPage}>
       <CenteredContentWrapper fullscreen={true}>
-        <h1> Discover </h1>
-        <div className={styles.recognizeMusicButton}>Recognize Music</div>
+        <h1> Shared Playlist </h1>
         <Button
           className={styles.playlistButton}
           onClick={() => {
-            history.push("/playlist");
+            history.push("/dashboard");
           }}
         >
-          PL
+          Dashboard
         </Button>
       </CenteredContentWrapper>
     </div>
   );
 };
 
-export default DashboardPage;
+export default PlaylistPage;

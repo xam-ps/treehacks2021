@@ -4,30 +4,16 @@ import { BrowserRouter as Router, Route, Link, Switch, BrowserRouter } from "rea
 import LoginPage from "./pages/LoginPage";
 import LandingPage from "./pages/LandingPage";
 import DashboardPage from "./pages/DashboardPage";
-import CenteredContentWrapper from "./modules/CenteredContentWrapper";
+import PlaylistPage from "./pages/PlaylistPage";
 
 export default function App() {
 	return (
 		<Router>
 			<main>
-				<CenteredContentWrapper>
-					<nav>
-						<ul>
-							<li>
-								<Link to="/">Home </Link>
-							</li>
-							<li>
-								<Link to="/login">Login </Link>
-							</li>
-							<li>
-								<Link to="/dashboard">Discover </Link>
-							</li>
-						</ul>
-					</nav>
-				</CenteredContentWrapper>
 				<Route path="/" exact component={LandingPage} />
 				<Route path="/login" exact component={LoginPage} />
 				<Route path="/dashboard" exact component={DashboardPage} />
+				<Route path="/playlist" exact component={PlaylistPage} />
 			</main>
 		</Router>
 	);

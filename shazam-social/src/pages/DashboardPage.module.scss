@@ -24,5 +24,11 @@
             color: $globalBg;
             padding-top: 115px;
         }
+
+        .playlistButton {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
     }
 }
