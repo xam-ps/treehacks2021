@@ -23,7 +23,7 @@ class CenteredContentWrapper extends React.Component {
 
     return (
       <div className={styles.centered} style={fullHeight}>
-        <div style={centeredMaxWith, fullHeight}>{this.props.children}</div>
+        <div style={{...centeredMaxWith, ...fullHeight}}>{this.props.children}</div>
       </div>
     );
   }
