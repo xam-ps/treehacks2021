@@ -1,0 +1,20 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .LandingPage {
+        text-align: center;
+        color: $globalBg;
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        .logo {
+            width: 50%;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+    }
+    
+}

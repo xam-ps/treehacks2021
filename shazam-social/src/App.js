@@ -1,10 +1,9 @@
 import React from "react";
-import "./index.scss";
-import "./App.scss";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import "./App.module.scss";
+import { BrowserRouter as Router, Route, Link, Switch, BrowserRouter } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import LandingPage from "./pages/LandingPage";
-import SignupPage from "./pages/SignupPage";
+import DashboardPage from "./pages/DashboardPage";
 import CenteredContentWrapper from "./modules/CenteredContentWrapper";
 
 export default function App() {
@@ -18,17 +17,17 @@ export default function App() {
 								<Link to="/">Home </Link>
 							</li>
 							<li>
-								<Link to="/signup">Signup </Link>
+								<Link to="/login">Login </Link>
 							</li>
 							<li>
-								<Link to="/login">Login </Link>
+								<Link to="/dashboard">Discover </Link>
 							</li>
 						</ul>
 					</nav>
 				</CenteredContentWrapper>
 				<Route path="/" exact component={LandingPage} />
-				<Route path="/signup" exact component={SignupPage} />
 				<Route path="/login" exact component={LoginPage} />
+				<Route path="/dashboard" exact component={DashboardPage} />
 			</main>
 		</Router>
 	);

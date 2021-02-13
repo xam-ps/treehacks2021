@@ -1,13 +1,9 @@
+@import 'index.scss';
 @import 'breakpoints';
 
 @include mobile-up {
-  body {
-    background: #232A35;
-    color: #D2DCF1;
-  }
-
   a{
-    color: #FDF2DF;
+    color: $globalText;
     text-decoration: none;
   }
 }
