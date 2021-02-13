@@ -1,0 +1,30 @@
+@import 'src/breakpoints';
+
+@include mobile-up{
+  .centered {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
+@include tablet-portrait-only {
+  .centered {
+    padding: 0 32px;
+
+    > div {
+      margin: 0 auto;
+    }
+  }
+}
+
+@include tablet-landscape-up {
+  .centered {
+    padding: 0 5%;
+
+    > div {
+      margin: 0 auto;
+    }
+  }
+}

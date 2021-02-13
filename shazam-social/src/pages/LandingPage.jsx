@@ -1,9 +1,10 @@
 import React from 'react';
+import CenteredContentWrapper from '../modules/CenteredContentWrapper';
 
 const LandingPage = () => (
-	<React.Fragment>
+	<CenteredContentWrapper>
 		<h1> Login </h1>
-	</React.Fragment>
+	</CenteredContentWrapper>
 );
 
 export default LandingPage;
