@@ -1,10 +1,10 @@
 import React from "react";
 import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 
-const SignupPage = () => (
+const DashboardPage = () => (
   <CenteredContentWrapper>
-    <h1> Signup </h1>
+    <h1> Discover </h1>
   </CenteredContentWrapper>
 );
 
-export default SignupPage;
+export default DashboardPage;
