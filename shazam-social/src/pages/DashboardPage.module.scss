@@ -4,12 +4,12 @@
 @include mobile-up {
     .DashboardPage {
         background-color: $globalBg;
-        color: $globalText;
         height: 100%;
         width: 100%;
         position: absolute;
 
         h1 {
+            color: $globalText;
             margin-top: 16px;
         }
 

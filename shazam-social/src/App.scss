@@ -1,5 +1,6 @@
 @import 'index.scss';
 @import 'breakpoints';
+@import '~antd/dist/antd.css';
 
 @include mobile-up {
   a{
