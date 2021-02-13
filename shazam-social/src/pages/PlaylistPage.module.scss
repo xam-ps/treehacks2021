@@ -1,0 +1,16 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .PlaylistPage {
+        background-color: $globalBg;
+        color: $globalText;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+
+        h1 {
+            margin-top: 16px;
+        }
+    }
+}
