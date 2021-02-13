@@ -24,15 +24,15 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                height: 24px;
-                width: 24px;
+                height: 30px;
+                width: 30px;
                 text-align: center;
                 border-radius: 50px;
                 background: #ffffffdd;
                 background-image: url('../assets/img/play.svg');
                 background-repeat: no-repeat;
-                background-position-x: 6px;
-                background-position-y: 4px;
+                background-position-x: 9px;
+                background-position-y: 7px;
                 background-size: 15px 15px;
             }
         }
@@ -42,11 +42,13 @@
             box-sizing: border-box;
             width: calc(100% - 100px);
             padding: 14px 10px;
+            position: relative;
+            color: $globalText;
 
             h3 {
                 width: 90%;
-                line-height: 20px;
-                font-size: 20px;
+                line-height: 26px;
+                font-size: 22px;
                 color: $globalText;
                 overflow: hidden;
                 white-space: nowrap;
@@ -55,11 +57,28 @@
 
             .artist {
                 width: 70%;
-                color: $globalText;
                 font-size: 12px;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+            }
+
+            .discoveredText {
+                margin-top: 10px;
+                text-align: right;
+                padding-right: 32px;
+            }
+
+            .discoveredDate {
+                line-height: 14px;
+                text-align: right;
+                padding-right: 32px;
+            }
+
+            .avatar {
+                position: absolute;
+                bottom: 10px;
+                right: 0;
             }
         }
     }
