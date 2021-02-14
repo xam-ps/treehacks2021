@@ -15,7 +15,7 @@ import SongHistory from "../modules/SongHistory";
 import CreateGroup from "../modules/CreateGroup";
 
 const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
-const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com/";
+const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com";
 const recorder = new MicRecorder({
   bitRate: 128,
 });
@@ -169,13 +169,17 @@ class DashboardPage extends Component {
           console.log(resJson);
           this.song = resJson;
           this.setState({ isModalOpen: true });
-          const responseStoreSong = await fetch(`${baseDomainDB}/songs/`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(resJson),
-          });
+          try{
+            const responseStoreSong = await fetch(`${baseDomainDB}/songs/`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(resJson),
+            });
+          }catch(e){
+            console.log(e);
+          }
         })
         .catch((e) => {
           console.log(e);
