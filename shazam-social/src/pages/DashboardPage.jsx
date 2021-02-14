@@ -42,7 +42,16 @@ class DashboardPage extends Component {
       <div className={styles.DashboardPage}>
         <CenteredContentWrapper fullscreen={true}>
           <h1> Discover </h1>
-          {this.state.isModalOpen ? <RecognizedSong data={this.song} /> : <p></p>}
+          {this.state.isModalOpen ? (
+            <RecognizedSong
+              data={this.song}
+              close={() => {
+                this.setState({ isModalOpen: false });
+              }}
+            />
+          ) : (
+            <p></p>
+          )}
           <div className={styles.verticalCenter}>
             <div className={styles.userAndGroups}>
               <Avatar
@@ -134,6 +143,12 @@ class DashboardPage extends Component {
       })
       .catch((e) => {
         console.log(e);
+        var resJson = {
+          title: "I don't know",
+          artist: "not found - sorry 😢",
+        };
+        this.song = resJson;
+        this.setState({ isModalOpen: true });
       });
     this.setState({ isRecording: false });
   }
