@@ -6,8 +6,7 @@ import styles from "./PlaylistPage.module.scss";
 import albumCoverJpg from "../assets/img/cover.jpg";
 import avatarJpg from "../assets/img/avatar.jpg";
 import Navigation from "../modules/Navigation";
-import firebase from "firebase";const baseDomain = "http://localhost:5000";
-
+import firebase from "firebase";
 
 // const data = [
 //   {
@@ -73,8 +72,8 @@ const PlaylistPage = () => {
   
   const [data, setData] = useState([]);
 
-  useEffect( ()=> {
-    const baseDomain = "http://localhost:5000";
+  useEffect(async ()=> {
+    const baseDomain = "http://localhost:8080";
     let email =  firebase.auth().currentUser.email;
     const response = await fetch(`${baseDomain}/getUserSongs/${email}`, {
       method: "GET"

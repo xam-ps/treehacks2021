@@ -12,7 +12,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
 import RecognizedSong from "../modules/RecognizedSong";
 
-const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
+const baseDomain = "http://localhost:8080";
 const recorder = new MicRecorder({
   bitRate: 128,
 });
