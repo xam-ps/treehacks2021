@@ -48,7 +48,11 @@ class DashboardPage extends Component {
                   : this.startRecording();
               }}
             >
-              <img src={startRecordingSvg} alt="" />
+              {this.state.isRecording ? (
+                <img src={recordSvg} alt="recording animation" />
+              ) : (
+                <img src={startRecordingSvg} alt="audio waveform" />
+              )}
             </div>
             <div className={styles.myHistory}>
               <div>

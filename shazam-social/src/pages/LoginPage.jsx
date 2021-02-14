@@ -8,7 +8,7 @@ firebase.initializeApp({
   apiKey: "AIzaSyBoKinSPrKLcHlFV1AYVW5rgF_5Qjh4toM",
   authDomain: "social-shazam.firebaseapp.com",
 });
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
 class LoginPage extends Component {
   state = { isSignedIn: false };
