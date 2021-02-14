@@ -11,6 +11,7 @@
         h1 {
             color: $globalText;
             margin-top: 16px;
+            text-align: center;
         }
 
         .recognizeMusicButton {
@@ -22,7 +23,8 @@
             background: white;
             text-align: center;
             color: $globalBg;
-            padding-top: 90px;
+            padding-top: 74px;
+            cursor: pointer;
         }
 
         .playlistButton {
