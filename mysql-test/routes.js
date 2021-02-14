@@ -89,17 +89,6 @@ router.get("/getUserGroups/:email",jsonParser, (req, res) => {
       });
 });
 
-router.get("/getUserSongs/:email", jsonParser, (req,res) => {
-	const userEmail = '"' + req.params.email + '"';
-  var getUserSongs = `SELECT title, artist, album, timestamp FROM socialshazam.discoveredSongs
-  left join socialshazam.Songs ON socialshazam.Songs.Id  =  socialshazam.discoveredSongs.songId
-  and socialshazam.discoveredSongs.userEmail = ${userEmail} where Id IS NOT NULL
-  `;
-  connection.query(getUserSongs, function (err, result) {
-    if (err) throw err;
-    return res.status(200).send(result);
-  });
-})
 
 // router.get("/test", jsonParser, (req,res) => {
 //   var getUserSongs = `SELECT * FROM socialshazam.Groups`;
