@@ -3,6 +3,7 @@ import styles from "./CreateGroup.module.scss";
 import closeSvg from "../assets/img/close-dark.svg";
 import { Button, Input, List } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import firebase from "firebase";
 const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com";
 const CreateGroup = (props) => {
   const [name, setName] = useState("");
@@ -19,6 +20,7 @@ const CreateGroup = (props) => {
   
   const resJson = {
     groupName: name,
+    admin: firebase.auth().currentUser.email,
     userEmail: email
   };
   console.log(resJson);
