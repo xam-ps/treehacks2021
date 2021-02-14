@@ -5,15 +5,32 @@
     .LandingPage {
         text-align: center;
         color: $globalBg;
+        height: 100vh;
+        background-color: #c9d1d4;
+        background-image: url('../assets/img/landingbg.jpg');
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
 
         h1 {
             margin: 20px 0;
         }
 
         .logo {
-            width: 50%;
+            width: 60%;
             max-width: 300px;
-            margin: 20px 0;
+            margin: 20px 0 10vh;
+        }
+
+        .slogan {
+            width: 80%;
+        }
+
+        .loginButton {
+            position: absolute;
+            bottom: 6vh;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
     
