@@ -1,0 +1,44 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .songList {
+        position: absolute;
+        width: 90%;
+        margin: 0 auto;
+        height: 70vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        background: $globalBg;
+        z-index: 10;
+        color: $globalText;
+        text-align: center;
+
+        .closeButton {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            height: 32px;
+            width: 32px;
+            padding-top: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 40px;
+            padding: 0 5px;
+            color: $globalText;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        p {
+            margin: 16px 0;
+            font-size: 22px;
+        }
+    }
+}

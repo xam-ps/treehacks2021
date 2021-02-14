@@ -1,0 +1,61 @@
+@import '../index.scss';
+@import '../breakpoints';
+
+@include mobile-up {
+    .createGroup {
+        position: absolute;
+        width: 90%;
+        margin: 0 auto;
+        height: 60vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        background: $lightYellow;
+        z-index: 10;
+        color: $globalText;
+        text-align: center;
+
+        .closeButton {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            height: 32px;
+            width: 32px;
+            padding-top: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 40px;
+            padding: 0 5px;
+            color: $globalBg;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        Input {
+            margin-top: 24px;
+            width: 90%;
+            font-size: 18px;
+        }
+
+        Textarea {
+            width: 90%;
+            font-size: 18px;
+            margin-top: 16px;
+        }
+
+        Button {
+            margin-top: 26px;
+            background: $globalBg;
+        }
+
+        p {
+            margin: 16px 0;
+            font-size: 22px;
+        }
+    }
+}

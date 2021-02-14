@@ -12,6 +12,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
 import RecognizedSong from "../modules/RecognizedSong";
 import SongHistory from "../modules/SongHistory";
+import CreateGroup from "../modules/CreateGroup";
 
 const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
 const recorder = new MicRecorder({
@@ -23,6 +24,7 @@ class DashboardPage extends Component {
     isRecording: false,
     isModalOpen: false,
     isHistoryOpen: false,
+    isGroupOpen: false,
   };
 
   constructor(props) {
@@ -63,6 +65,15 @@ class DashboardPage extends Component {
           ) : (
             <p></p>
           )}
+          {this.state.isGroupOpen ? (
+            <CreateGroup
+              close={() => {
+                this.setState({ isGroupOpen: false });
+              }}
+            />
+          ) : (
+            <p></p>
+          )}
           <div className={styles.verticalCenter}>
             <div className={styles.userAndGroups}>
               <Avatar
@@ -73,7 +84,13 @@ class DashboardPage extends Component {
                 title={displayName}
               />
               <div className={styles.createGroup}>
-                <img src={groupSvg} alt="Group icon" />
+                <img
+                  src={groupSvg}
+                  alt="Group icon"
+                  onClick={() => {
+                    this.setState({ isGroupOpen: true });
+                  }}
+                />
               </div>
             </div>
             <div
