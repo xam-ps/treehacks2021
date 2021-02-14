@@ -4,7 +4,7 @@ import closeSvg from "../assets/img/close.svg";
 import albumCoverJpg from "../assets/img/cover.jpg";
 import avatarJpg from "../assets/img/avatar.jpg";
 import { List } from "antd";
-import PlaylistEntry from "./PlaylistEntry";
+import firebase from "firebase";
 import  { useEffect, useState } from "react";
 
 const data = [
