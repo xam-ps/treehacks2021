@@ -10,6 +10,7 @@ import MicRecorder from "mic-recorder-to-mp3";
 import firebase from "firebase";
 import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
+import RecognizedSong from "../modules/RecognizedSong";
 
 const baseDomain = "http://localhost:5000";
 const recorder = new MicRecorder({
@@ -19,22 +20,37 @@ const recorder = new MicRecorder({
 class DashboardPage extends Component {
   state = {
     isRecording: false,
+    isModalOpen: false,
   };
+
+  constructor(props) {
+    super(props);
+    this.song = null;
+  }
 
   render() {
     const { history } = this.props;
+    let photoURL = null;
+    let displayName = null;
+    try {
+      photoURL = firebase.auth().currentUser.photoURL;
+      displayName = firebase.auth().currentUser.displayName;
+    } catch (e) {
+      console.log(e);
+    }
     return (
       <div className={styles.DashboardPage}>
         <CenteredContentWrapper fullscreen={true}>
           <h1> Discover </h1>
+          {this.state.isModalOpen ? <RecognizedSong data={this.song} /> : <p></p>}
           <div className={styles.verticalCenter}>
             <div className={styles.userAndGroups}>
               <Avatar
                 className={styles.avatar}
                 size={50}
                 icon={<UserOutlined />}
-                src={firebase.auth().currentUser.photoURL}
-                title={firebase.auth().currentUser.displayName}
+                src={photoURL}
+                title={displayName}
               />
               <div className={styles.createGroup}>
                 <img src={groupSvg} alt="Group icon" />
@@ -106,6 +122,8 @@ class DashboardPage extends Component {
           email: firebase.auth().currentUser.email,
         };
         console.log(resJson);
+        this.song = resJson;
+        this.setState({ isModalOpen: true });
         const responseStoreSong = await fetch(`${baseDomain}/songs`, {
           method: "POST",
           headers: {
