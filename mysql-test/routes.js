@@ -8,16 +8,11 @@ var jsonParser = bodyParser.json()
 const {USER,PASSWORD,DATABASE,SOCKET_PATH } = process.env;
 const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
 const connection = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "password",
-	database: "socialshazam",
+    user: USER,
+    password: PASSWORD,
+    database: DATABASE,
+    socketPath: `${dbSocketPath}/${SOCKET_PATH}`,
 });
-  //   user: USER,
-  //   password: PASSWORD,
-  //   database: DATABASE,
-  //   socketPath: `${dbSocketPath}/${SOCKET_PATH}`,
-  // });
 
 router.post("/songs", jsonParser, (req, res) => {
 	const id = '"' + req.body.id + '"';
