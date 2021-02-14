@@ -53,7 +53,7 @@ const PlaylistPage = () => {
   useEffect(async ()=> {
     const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com";
     let email =  firebase.auth().currentUser.email;
-    const response = await fetch(`${baseDomainDB}/getUserSongs/${email}`, {
+    const response = await fetch(`${baseDomainDB}/userGroupPlaylists/${email}`, {
       method: "GET"
     });
     const data = await response.json();
