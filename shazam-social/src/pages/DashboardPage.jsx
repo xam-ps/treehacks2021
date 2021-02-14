@@ -11,6 +11,7 @@ import firebase from "firebase";
 import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
 import RecognizedSong from "../modules/RecognizedSong";
+import SongHistory from "../modules/SongHistory";
 
 const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
 const recorder = new MicRecorder({
@@ -21,6 +22,7 @@ class DashboardPage extends Component {
   state = {
     isRecording: false,
     isModalOpen: false,
+    isHistoryOpen: false,
   };
 
   constructor(props) {
@@ -47,6 +49,15 @@ class DashboardPage extends Component {
               data={this.song}
               close={() => {
                 this.setState({ isModalOpen: false });
+              }}
+            />
+          ) : (
+            <p></p>
+          )}
+          {this.state.isHistoryOpen ? (
+            <SongHistory
+              close={() => {
+                this.setState({ isHistoryOpen: false });
               }}
             />
           ) : (
@@ -80,7 +91,11 @@ class DashboardPage extends Component {
               )}
             </div>
             <div className={styles.myHistory}>
-              <div>
+              <div
+                onClick={() => {
+                  this.setState({ isHistoryOpen: true });
+                }}
+              >
                 <img src={historySvg} alt="History icon" />
               </div>
             </div>
