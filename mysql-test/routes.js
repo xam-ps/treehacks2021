@@ -72,10 +72,11 @@ order by socialshazam.discoveredSongs.timestamp desc;
 
 router.get("/getUserGroups",jsonParser, (req, res) => {
     const userEmail = '"' + req.body.userEmail + '"';
-    var getUserGroups = `SELECT id FROM  socialshazam.Groups WHERE userEmail = ?`;
+    var getUserGroups = `SELECT groupName FROM  socialshazam.Groups WHERE userEmail = ${userEmail}`;
 
-    connection.query(addToGroups, function (err, [], result) {
+    connection.query(getUserGroups, function (err, result) {
         if (err) throw err;
+        return res.status(200).send(result);
       });
 });
 
