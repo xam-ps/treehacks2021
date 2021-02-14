@@ -12,7 +12,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
 import RecognizedSong from "../modules/RecognizedSong";
 
-const baseDomain = "http://localhost:5000";
+const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
 const recorder = new MicRecorder({
   bitRate: 128,
 });
@@ -95,7 +95,9 @@ class DashboardPage extends Component {
     recorder
       .start()
       .then(() => {
-        // something else
+        setTimeout(() => {
+          this.stopRecording();
+        }, 12000);
       })
       .catch((e) => {
         console.error(e);
@@ -104,53 +106,55 @@ class DashboardPage extends Component {
   }
 
   async stopRecording() {
-    recorder
-      .stop()
-      .getMp3()
-      .then(async ([buffer, blob]) => {
-        // do what ever you want with buffer and blob
-        // Example: Create a mp3 file and play
-        const file = new File(buffer, "recognize.mp3", {
-          type: blob.type,
-          lastModified: Date.now(),
-        });
+    if (this.state.isRecording) {
+      recorder
+        .stop()
+        .getMp3()
+        .then(async ([buffer, blob]) => {
+          // do what ever you want with buffer and blob
+          // Example: Create a mp3 file and play
+          const file = new File(buffer, "recognize.mp3", {
+            type: blob.type,
+            lastModified: Date.now(),
+          });
 
-        const formData = new FormData();
-        formData.append("audioFile", file);
-        const response = await fetch(`${baseDomain}/search-sound`, {
-          method: "POST",
-          body: formData,
+          const formData = new FormData();
+          formData.append("audioFile", file);
+          const response = await fetch(`${baseDomain}/search-sound/`, {
+            method: "POST",
+            body: formData,
+          });
+          const songData = await response.json();
+          let jsonStructure = songData.metadata.music;
+          var resJson = {
+            id: jsonStructure[0].acrid,
+            title: jsonStructure[0].title,
+            artist: jsonStructure[0].artists[0].name,
+            album: jsonStructure[0].album.name,
+            email: firebase.auth().currentUser.email,
+          };
+          console.log(resJson);
+          this.song = resJson;
+          this.setState({ isModalOpen: true });
+          const responseStoreSong = await fetch(`${baseDomain}/songs`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(resJson),
+          });
+        })
+        .catch((e) => {
+          console.log(e);
+          var resJson = {
+            title: "I don't know",
+            artist: "not found - sorry 😢",
+          };
+          this.song = resJson;
+          this.setState({ isModalOpen: true });
         });
-        const songData = await response.json();
-        let jsonStructure = songData.metadata.music;
-        var resJson = {
-          id: jsonStructure[0].acrid,
-          title: jsonStructure[0].title,
-          artist: jsonStructure[0].artists[0].name,
-          album: jsonStructure[0].album.name,
-          email: firebase.auth().currentUser.email,
-        };
-        console.log(resJson);
-        this.song = resJson;
-        this.setState({ isModalOpen: true });
-        const responseStoreSong = await fetch(`${baseDomain}/songs`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(resJson),
-        });
-      })
-      .catch((e) => {
-        console.log(e);
-        var resJson = {
-          title: "I don't know",
-          artist: "not found - sorry 😢",
-        };
-        this.song = resJson;
-        this.setState({ isModalOpen: true });
-      });
-    this.setState({ isRecording: false });
+      this.setState({ isRecording: false });
+    }
   }
 }
 
