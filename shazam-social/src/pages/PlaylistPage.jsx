@@ -73,7 +73,7 @@ const PlaylistPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(async ()=> {
-    const baseDomain = "http://localhost:8080";
+    const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net";
     let email =  firebase.auth().currentUser.email;
     const response = await fetch(`${baseDomain}/getUserSongs/${email}`, {
       method: "GET"
