@@ -1,6 +1,5 @@
-import { Button, List, Avatar } from "antd";
+import { List } from "antd";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 import PlaylistEntry from "../modules/PlaylistEntry";
 import styles from "./PlaylistPage.module.scss";
@@ -69,7 +68,6 @@ const data = [
 ];
 
 const PlaylistPage = () => {
-  const history = useHistory();
   return (
     <div className={styles.PlaylistPage}>
       <CenteredContentWrapper fullscreen={true}>
