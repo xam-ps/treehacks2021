@@ -1,6 +1,7 @@
 import React from "react";
 import CenteredContentWrapper from "../modules/CenteredContentWrapper";
-import logoPng from "../assets/img/logo.png";
+import logoSvg from "../assets/img/logo.svg";
+import SoMuDiSvg from "../assets/img/SocialMusicDiscovery.svg";
 import styles from "./LandingPage.module.scss";
 import { Button } from "antd";
 import { useHistory } from "react-router";
@@ -9,18 +10,22 @@ const LandingPage = () => {
   const history = useHistory();
   return (
     <div className={styles.LandingPage}>
-      <CenteredContentWrapper>
-        <h1> DiMuTo </h1>
-        <img className={styles.logo} src={logoPng} alt="" />
+      <CenteredContentWrapper fullscreen={true}>
+        <img className={styles.logo} src={logoSvg} alt="Logo in waveform" />
+        <div className={styles.slogan}>
+          <img src={SoMuDiSvg} alt="" />
+        </div>
         <br />
-        <Button
-          type="primary"
-          onClick={() => {
-            history.push("/login");
-          }}
-        >
-          Login
-        </Button>
+        <div className={styles.loginButton}>
+          <Button
+            type="primary"
+            onClick={() => {
+              history.push("/login");
+            }}
+          >
+            Login
+          </Button>
+        </div>
       </CenteredContentWrapper>
     </div>
   );
