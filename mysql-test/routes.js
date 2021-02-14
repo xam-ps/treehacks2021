@@ -3,13 +3,21 @@ const router = express.Router();
 var bodyParser = require("body-parser");
 const mysql = require("mysql");
 
-var jsonParser = bodyParser.json();
+var jsonParser = bodyParser.json()
+
+const {USER,PASSWORD,DATABASE,SOCKET_PATH } = process.env;
+const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
 const connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
 	password: "password",
 	database: "socialshazam",
 });
+  //   user: USER,
+  //   password: PASSWORD,
+  //   database: DATABASE,
+  //   socketPath: `${dbSocketPath}/${SOCKET_PATH}`,
+  // });
 
 router.post("/songs", jsonParser, (req, res) => {
 	const id = '"' + req.body.id + '"';
@@ -18,36 +26,37 @@ router.post("/songs", jsonParser, (req, res) => {
 	const album = '"' + req.body.album + '"';
 	const email = '"' + req.body.email + '"';
 
-	var addToSongs = `INSERT INTO SONGS (Id, title, artist, album) VALUES (${id},${title},${artist},${album})`;
-	connection.query(addToSongs, function (err, result) {
-		if (err) throw err;
-	});
-
-	var addToDiscoveredSong = `INSERT INTO discoveredSongs (songId, userEmail, timestamp) VALUES (${id},${email},now())`;
-	connection.query(addToDiscoveredSong, function (err, result) {
-		if (err) throw err;
-	});
+    var addToSongs = `INSERT INTO Songs (Id, title, artist, album) VALUES (${id},${title},${artist},${album})`;
+    connection.query(addToSongs, function (err, result) {
+      console.log(addToSongs);
+        if (err) throw err;
+      });
+    
+      var addToDiscoveredSong = `INSERT INTO discoveredSongs (songId, userEmail, timestamp) VALUES (${id},${email},CURDATE())`;
+      connection.query(addToDiscoveredSong, function (err, result) {
+        console.log(addToDiscoveredSong);
+        if (err) throw err;
+      });
 });
 
-let groupId;
-router.post("/groups", jsonParser, (req, res) => {
-	const groupName = '"' + req.body.groupName + '"';
-	const userEmail = '"' + req.body.userEmail + '"';
-	let emails = [];
-	emails = req.body.emails;
-	var addToGroups = `INSERT INTO socialshazam.Groups (groupName, userEmail) VALUES (${groupName},${userEmail})`;
-	connection.query(addToGroups, function (err, result) {
-		if (err) throw err;
-	});
-	emails.push(req.body.userEmail);
-	emails.forEach((element) => {
-		const ele = '"' + element + '"';
-		var addToUserInGroup = `INSERT INTO usersInGroup (groupId, userEmail) VALUES (LAST_INSERT_ID(),${ele})`;
-		console.log(addToUserInGroup);
-		connection.query(addToUserInGroup, function (err, result) {
-			if (err) throw err;
-		});
-	});
+router.post("/groups",jsonParser, (req, res) => {
+    const groupName = '"' + req.body.groupName + '"';
+    const userEmail = '"' + req.body.userEmail + '"';
+    let emails = []
+    emails = req.body.emails;
+    var addToGroups = `INSERT INTO socialshazam.Groups (groupName, userEmail) VALUES (${groupName},${userEmail})`;
+    connection.query(addToGroups, function (err, result) {
+        if (err) throw err;
+      });
+      emails.push(req.body.userEmail);
+      emails.forEach(element => {
+          const ele = '"' + element + '"';
+        var addToUserInGroup = `INSERT INTO usersInGroup (groupId, userEmail) VALUES (LAST_INSERT_ID(),${ele})`;
+        console.log(addToUserInGroup);
+        connection.query(addToUserInGroup, function (err, result) {
+            if (err) throw err;
+          });
+      });
 });
 
 router.get("/userGroupPlaylists", jsonParser, (req, res) => {
@@ -78,14 +87,29 @@ router.get("/getUserSongs/:email", jsonParser, (req, res) => {
 	});
 });
 
-router.get("/getUserGroups", jsonParser, (req, res) => {
-	const userEmail = '"' + req.body.userEmail + '"';
-	var getUserGroups = `SELECT groupName FROM  socialshazam.Groups WHERE userEmail = ${userEmail}`;
+router.get("/getUserGroups",jsonParser, (req, res) => {
+    const userEmail = '"' + req.body.userEmail + '"';
+    var getUserGroups = `SELECT groupName FROM  socialshazam.Groups WHERE userEmail = ${userEmail}`;
+    connection.query(getUserGroups, function (err, result) {
+        if (err) throw err;
+        return res.status(200).send(result);
+      });
+});
 
-	connection.query(getUserGroups, function (err, result) {
-		if (err) throw err;
-		return res.status(200).send(result);
-	});
+router.get("/getUserSongs", jsonParser, (req,res) => {
+  const userEmail = '"' + req.body.userEmail + '"';
+  var getUserSongs = `SELECT title, artist, album, timestamp FROM socialshazam.discoveredSongs
+  left join socialshazam.Songs ON socialshazam.Songs.Id  =  socialshazam.discoveredSongs.songId
+  and socialshazam.discoveredSongs.userEmail = ${userEmail} where Id IS NOT NULL
+  `;
+  connection.query(getUserSongs, function (err, result) {
+    if (err) throw err;
+    return res.status(200).send(result);
+  });
+})
+
+router.get('/', (req, res) => {
+  res.send('Hello from App Engine!');
 });
 
 module.exports = router;

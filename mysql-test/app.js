@@ -10,20 +10,22 @@ var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
 
+const { ACCESS_KEY, ACCESS_SECRET,HOST} = process.env;
 
 // var upload = multer({ dest: "uploads/" });
 
 // Replace "###...###" below with your project's host, access_key and access_secret.
 var app = express();
 app.use(cors());
+app.use(routes);
 var defaultOptions = {
   endpoint: "/v1/identify",
   signature_version: "1",
   data_type: "audio",
   secure: true,
-  access_key: "98f751a363f90b3c508d37058a37244c",
-  access_secret: "GEIyDGb0kkl1TZ3zmVKMbxl7ScYcvqi4HODUjOxw",
-  host: "identify-us-west-2.acrcloud.com",
+  access_key: ACCESS_KEY,
+  access_secret: ACCESS_SECRET,
+  host: HOST,
 };
 
 function buildStringToSign(
@@ -146,11 +148,9 @@ app.post("/search-sound", upload.single("audioFile"), (req, res) => {
     }
   );
 });
-app.listen(5000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("Server Started");
 });
-
-app.use(routes);
 
 
 
