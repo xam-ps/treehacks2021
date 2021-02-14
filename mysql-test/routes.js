@@ -59,8 +59,8 @@ router.post("/groups",jsonParser, (req, res) => {
       });
 });
 
-router.get("/userGroupPlaylists", jsonParser, (req, res) => {
-	const userEmail = '"' + req.body.userEmail + '"';
+router.get("/userGroupPlaylists/:email", jsonParser, (req, res) => {
+	const userEmail = '"' + req.params.email + '"';
 	var getSongId = `
 select distinct(title), artist, album, socialshazam.discoveredSongs.timestamp from socialshazam.Groups 
 left join  socialshazam.usersInGroup ON socialshazam.Groups.id = socialshazam.usersInGroup.groupId and socialshazam.Groups.userEmail = ${userEmail}
@@ -87,8 +87,8 @@ router.get("/getUserSongs/:email", jsonParser, (req, res) => {
 	});
 });
 
-router.get("/getUserGroups",jsonParser, (req, res) => {
-    const userEmail = '"' + req.body.userEmail + '"';
+router.get("/getUserGroups/:email",jsonParser, (req, res) => {
+	const userEmail = '"' + req.params.email + '"';
     var getUserGroups = `SELECT groupName FROM  socialshazam.Groups WHERE userEmail = ${userEmail}`;
     connection.query(getUserGroups, function (err, result) {
         if (err) throw err;
@@ -96,8 +96,8 @@ router.get("/getUserGroups",jsonParser, (req, res) => {
       });
 });
 
-router.get("/getUserSongs", jsonParser, (req,res) => {
-  const userEmail = '"' + req.body.userEmail + '"';
+router.get("/getUserSongs/:email", jsonParser, (req,res) => {
+	const userEmail = '"' + req.params.email + '"';
   var getUserSongs = `SELECT title, artist, album, timestamp FROM socialshazam.discoveredSongs
   left join socialshazam.Songs ON socialshazam.Songs.Id  =  socialshazam.discoveredSongs.songId
   and socialshazam.discoveredSongs.userEmail = ${userEmail} where Id IS NOT NULL
