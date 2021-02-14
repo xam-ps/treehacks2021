@@ -28,9 +28,9 @@ const SongHistory = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(async ()=> {
-    const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net";
+    const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com/";
     let email =  firebase.auth().currentUser.email;
-    const response = await fetch(`${baseDomain}/getUserSongs/${email}`, {
+    const response = await fetch(`${baseDomainDB}/getUserSongs/${email}`, {
       method: "GET"
     });
     const data = await response.json();
@@ -50,12 +50,12 @@ const SongHistory = (props) => {
           }}
         />
       </div>
-      <h2>Song History</h2>
+      <h2>My History</h2>
       <List
         itemLayout="horizontal"
         size="large"
         dataSource={data}
-        renderItem={(item) => <div><h2>{item.title}</h2></div>}
+        renderItem={(item) => <div><h3>{item.title}</h3></div>}
       />
     </div>
   );

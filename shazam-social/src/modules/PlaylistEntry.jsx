@@ -2,12 +2,13 @@ import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
 import React from "react";
 import styles from "./PlaylistEntry.module.scss";
+import coverPlaceholderPng from "../assets/img/coverPlaceholder.png";
 
 const PlaylistEntry = (props) => {
   return (
     <div className={styles.playlistEntry}>
       <div className={styles.coverWrapper}>
-        <img src={props.data.imgSrc} alt="Song cover" />
+        <img src={coverPlaceholderPng} alt="Song cover" />
       </div>
       <div className={styles.songData}>
         <h3>{props.data.title}</h3>

@@ -43,29 +43,7 @@ import firebase from "firebase";
 //     firstDate: "01/12/2021",
 //     avatar: avatarJpg,
 //     imgSrc: albumCoverJpg,
-//   },
-//   {
-//     title: "Ant Design Title 2",
-//     artist: "Tash Sultana",
-//     firstDate: "01/12/2021",
-//     avatar: avatarJpg,
-//     imgSrc: albumCoverJpg,
-//   },
-//   {
-//     title: "Ant Design Title 3",
-//     artist: "Tash Sultana",
-//     firstDate: "01/12/2021",
-//     avatar: avatarJpg,
-//     imgSrc: albumCoverJpg,
-//   },
-//   {
-//     title:
-//       "Ant Design Title 4 Ant Design Title 4 Ant Design Title 4 Ant Design Title 4",
-//     artist: "Tash Sultana Tash Sultana Tash Sultana Tash Sultana Tash Sultana",
-//     firstDate: "01/12/2021",
-//     avatar: null,
-//     imgSrc: albumCoverJpg,
-//   },
+//   }
 // ];
 
 const PlaylistPage = () => {
@@ -73,9 +51,9 @@ const PlaylistPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(async ()=> {
-    const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net";
+    const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com/";
     let email =  firebase.auth().currentUser.email;
-    const response = await fetch(`${baseDomain}/userGroupPlaylists/${email}`, {
+    const response = await fetch(`${baseDomainDB}/userGroupPlaylists/${email}`, {
       method: "GET"
     });
     const data = await response.json();
