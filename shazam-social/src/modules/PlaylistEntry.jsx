@@ -19,7 +19,7 @@ const PlaylistEntry = (props) => {
           size={36}
           icon={<UserOutlined />}
           src={props.data.avatar}
-        ></Avatar>
+        />
       </div>
     </div>
   );

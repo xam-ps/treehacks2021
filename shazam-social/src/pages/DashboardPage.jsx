@@ -3,9 +3,13 @@ import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 import styles from "./DashboardPage.module.scss";
 import recordSvg from "../assets/img/audio.svg";
 import startRecordingSvg from "../assets/img/soundwave.svg";
+import groupSvg from "../assets/img/group.svg";
+import historySvg from "../assets/img/history.svg";
 import Navigation from "../modules/Navigation";
 import MicRecorder from "mic-recorder-to-mp3";
 import firebase from "firebase";
+import Avatar from "antd/lib/avatar/avatar";
+import { UserOutlined } from "@ant-design/icons";
 
 const baseDomain = "http://localhost:5000";
 const recorder = new MicRecorder({
@@ -23,15 +27,34 @@ class DashboardPage extends Component {
       <div className={styles.DashboardPage}>
         <CenteredContentWrapper fullscreen={true}>
           <h1> Discover </h1>
-          <div
-            className={styles.recognizeMusicButton}
-            onClick={() => {
-              this.state.isRecording
-                ? this.stopRecording()
-                : this.startRecording();
-            }}
-          >
-            <img src={startRecordingSvg} alt="" />
+          <div className={styles.verticalCenter}>
+            <div className={styles.userAndGroups}>
+              <Avatar
+                className={styles.avatar}
+                size={50}
+                icon={<UserOutlined />}
+                src={firebase.auth().currentUser.photoURL}
+                title={firebase.auth().currentUser.displayName}
+              />
+              <div className={styles.createGroup}>
+                <img src={groupSvg} alt="Group icon" />
+              </div>
+            </div>
+            <div
+              className={styles.recognizeMusicButton}
+              onClick={() => {
+                this.state.isRecording
+                  ? this.stopRecording()
+                  : this.startRecording();
+              }}
+            >
+              <img src={startRecordingSvg} alt="" />
+            </div>
+            <div className={styles.myHistory}>
+              <div>
+                <img src={historySvg} alt="History icon" />
+              </div>
+            </div>
           </div>
         </CenteredContentWrapper>
         <Navigation />
@@ -82,7 +105,7 @@ class DashboardPage extends Component {
         const responseStoreSong = await fetch(`${baseDomain}/songs`, {
           method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(resJson),
         });

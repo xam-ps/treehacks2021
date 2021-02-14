@@ -12,7 +12,12 @@ const Navigation = () => {
   return (
     <div className={styles.navigation}>
       <div>
-        <Button type="link">
+        <Button
+          type="link"
+          onClick={() => {
+            history.push("/notifications");
+          }}
+        >
           <img src={notificationSvg} alt="Notification bell" />
           <p>Notifications</p>
         </Button>
@@ -25,7 +30,12 @@ const Navigation = () => {
           <img src={discoverySvg} alt="Compas" />
           <p>Discover</p>
         </Button>
-        <Button type="link">
+        <Button
+          type="link"
+          onClick={() => {
+            history.push("/leaderboard");
+          }}
+        >
           <img src={leaderboardSvg} alt="Leaderboard" />
           <p>Leaderboard</p>
         </Button>
