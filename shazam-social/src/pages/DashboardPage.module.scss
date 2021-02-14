@@ -14,11 +14,33 @@
             text-align: center;
         }
 
+        .verticalCenter {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        .userAndGroups {
+            width: 250px;
+            margin: 0 auto 0;
+            overflow: hidden;
+
+            .createGroup {
+                float: right;
+                padding-top: 7px;
+
+                img {
+                    width: 60px;
+                }
+            }
+        }
+
         .recognizeMusicButton {
             box-sizing: border-box;
             height: 250px;
             width: 250px;
-            margin: 25vh auto 0;
+            margin: 14px auto 0;
             border-radius: 500px;
             background: white;
             text-align: center;
@@ -31,6 +53,40 @@
             position: absolute;
             bottom: 5px;
             right: 5px;
+        }
+
+        .myHistory {
+            width: 250px;
+            margin: -34px auto 0;
+            overflow: hidden;
+
+            >div {
+                float: right;
+
+                img {
+                    width: 40px;
+                }
+            }
+        }
+    }
+}
+
+@include tablet-landscape-up {
+    .DashboardPage {
+        .verticalCenter {
+            position: relative;
+            width: 100%;
+            top: auto;
+            transform: unset;
+            margin-top: 20px;
+        }
+
+        .userAndGroups {
+            width: 80%;
+        }
+
+        .recognizeMusicButton {
+            margin-top: 50px;
         }
     }
 }

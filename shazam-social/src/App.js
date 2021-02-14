@@ -14,6 +14,8 @@ export default function App() {
 				<Route path="/login" exact component={LoginPage} />
 				<Route path="/dashboard" exact component={DashboardPage} />
 				<Route path="/playlist" exact component={PlaylistPage} />
+				<Route path="/leaderboard" exact component={PlaylistPage} />
+				<Route path="/notifications" exact component={PlaylistPage} />
 			</main>
 		</Router>
 	);
