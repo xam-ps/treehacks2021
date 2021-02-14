@@ -5,8 +5,8 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { Redirect } from "react-router-dom";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBoKinSPrKLcHlFV1AYVW5rgF_5Qjh4toM",
-  authDomain: "social-shazam.firebaseapp.com",
+  apiKey: "AIzaSyAQhqI_yrQR6-tZwRigGODOOOtFzvVxE7I",
+  authDomain: "shazamsocial12.firebaseapp.com",
 });
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
