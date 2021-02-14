@@ -70,12 +70,12 @@ class DashboardPage extends Component {
           body: formData,
         });
         const songData = await response.json();
-        let jsonStructure = songData.metadata.music[0];
+        let jsonStructure = songData.metadata.music;
         var resJson = {
-          id: jsonStructure.acrid,
-          title: jsonStructure.title,
-          artist: jsonStructure.artists[0].name,
-          album: jsonStructure.album.name,
+          id: jsonStructure[0].acrid,
+          title: jsonStructure[0].title,
+          artist: jsonStructure[0].artists[0].name,
+          album: jsonStructure[0].album.name,
           email: firebase.auth().currentUser.email,
         };
         console.log(resJson);
@@ -84,7 +84,7 @@ class DashboardPage extends Component {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: resJson,
+          body: JSON.stringify(resJson),
         });
       })
       .catch((e) => {

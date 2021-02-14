@@ -1,31 +1,29 @@
+const routes = require('./routes.js')
 var url = require("url");
 var fs = require("fs");
 var crypto = require("crypto");
-//npm install request
 var request = require("request");
 var multer = require("multer");
 var express = require("express");
 var cors = require("cors");
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
-require("dotenv").config();
 
-const {ACCESS_KEY, ACCESS_SECRET_HOST} = process.env;
+
 
 // var upload = multer({ dest: "uploads/" });
 
 // Replace "###...###" below with your project's host, access_key and access_secret.
 var app = express();
 app.use(cors());
-
 var defaultOptions = {
   endpoint: "/v1/identify",
   signature_version: "1",
   data_type: "audio",
   secure: true,
-  access_key: ACCESS_KEY,
-  access_secret: ACCESS_SECRET,
-  host: HOST,
+  access_key: "98f751a363f90b3c508d37058a37244c",
+  access_secret: "GEIyDGb0kkl1TZ3zmVKMbxl7ScYcvqi4HODUjOxw",
+  host: "identify-us-west-2.acrcloud.com",
 };
 
 function buildStringToSign(
@@ -130,7 +128,7 @@ function identify_v2(data, options, cb) {
     });
 }
 
-var bitmap = fs.readFileSync("one.mp3");
+// var bitmap = fs.readFileSync("one.mp3");
 
 app.get("/", (req, res) => {
   return res.send("Server up and running");
@@ -151,3 +149,8 @@ app.post("/search-sound", upload.single("audioFile"), (req, res) => {
 app.listen(5000, () => {
   console.log("Server Started");
 });
+
+app.use(routes);
+
+
+
