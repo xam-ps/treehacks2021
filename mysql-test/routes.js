@@ -5,15 +5,13 @@ const mysql = require("mysql");
 
 var jsonParser = bodyParser.json()
 
-const {USER,PASSWORD,DATABASE,SOCKET_PATH } = process.env;
 const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
 const connection = mysql.createConnection({
-    user: USER,
-    password: PASSWORD,
-    database: DATABASE,
-    socketPath: `${dbSocketPath}/${SOCKET_PATH}`,
+    user: "root",
+    password: "password1",
+    database: "socialshazam",
+    socketPath: `${dbSocketPath}/shazamsocial12:us-west2:social-shazam1`,
 });
-
 router.post("/songs", jsonParser, (req, res) => {
 	const id = '"' + req.body.id + '"';
 	const title = '"' + req.body.title + '"';
@@ -102,6 +100,26 @@ router.get("/getUserSongs/:email", jsonParser, (req,res) => {
     return res.status(200).send(result);
   });
 })
+
+// router.get("/test", jsonParser, (req,res) => {
+//   var getUserSongs = `SELECT * FROM socialshazam.Groups`;
+//   connection.query(getUserSongs, function (err, result) {
+//     if (err) throw err;
+//     return res.status(200).send(result);
+//   });
+// })
+
+// router.get("/testEmail/:email", jsonParser, (req,res) => {
+// 	const userEmail = '"' + req.params.email + '"';
+//   var getUserSongs = `SELECT * FROM socialshazam.Groups WHERE socialshazam.Groups.userEmail = ${userEmail}`;
+//   connection.query(getUserSongs, function (err, result) {
+//     if (err) throw err;
+//     return res.status(200).send(result);
+//   });
+// })
+
+
+
 
 router.get('/', (req, res) => {
   res.send('Hello from App Engine!');
