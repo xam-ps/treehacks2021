@@ -3,7 +3,7 @@ import styles from "./CreateGroup.module.scss";
 import closeSvg from "../assets/img/close-dark.svg";
 import { Button, Input, List } from "antd";
 import TextArea from "antd/lib/input/TextArea";
-const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
+const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com/";
 const CreateGroup = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState([])
@@ -24,7 +24,7 @@ const CreateGroup = (props) => {
     email: email
   };
   console.log(resJson);
-  const responseStoreSong = await fetch(`${baseDomain}/groups`, {
+  const responseStoreSong = await fetch(`${baseDomainDB}/groups`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
