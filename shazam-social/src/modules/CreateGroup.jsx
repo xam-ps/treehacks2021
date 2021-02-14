@@ -49,7 +49,7 @@ const CreateGroup = (props) => {
         placeholder="Email Addresses (use comma separation please ;))"
         rows={4} onChange = {handleEmailChange}
       />
-      <Button type="primary" size={'large'} onClick={handleSubmit}>Primary</Button>
+      <Button type="primary" size={'large'} onClick={handleSubmit}>Create Group</Button>
     </div>
   );
 };
