@@ -4,7 +4,7 @@ import avatarJpg from "../assets/img/avatar.jpg";
 import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 import LeaderboardEntry from "../modules/LeaderboardEntry";
 import Navigation from "../modules/Navigation";
-import styles from "./PlaylistPage.module.scss";
+import styles from "./LeaderboardPage.module.scss";
 
 const data = [
   {

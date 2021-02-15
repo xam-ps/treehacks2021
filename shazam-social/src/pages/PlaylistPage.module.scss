@@ -16,7 +16,8 @@
 
         .scrollContainer {
             height: calc(100% - 30px);
-            overflow: scroll;
+            overflow-y: scroll;
+            scrollbar-width: none;
             padding-bottom: 100px;
 
             ul {

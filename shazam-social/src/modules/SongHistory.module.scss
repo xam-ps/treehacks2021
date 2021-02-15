@@ -40,7 +40,8 @@
 
         .songs {
             height: calc(70vh - 100px);
-            overflow: scroll;
+            overflow-y: scroll;
+            scrollbar-width: none;
         }
 
         h3 {
