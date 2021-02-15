@@ -1,8 +1,10 @@
 const express = require("express");
-const router = express.Router();
+const router = express();
 var bodyParser = require("body-parser");
 const mysql = require("mysql");
+var cors = require("cors");
 
+router.use(cors())
 var jsonParser = bodyParser.json()
 
 const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
@@ -10,7 +12,8 @@ const connection = mysql.createConnection({
     user: "root",
     password: "password1",
     database: "socialshazam",
-    socketPath: `${dbSocketPath}/shazamsocial12:us-west2:social-shazam1`,
+    // host : "localhost"
+     socketPath: `${dbSocketPath}/shazamsocial12:us-west2:social-shazam1`,
 });
 router.post("/songs", jsonParser, (req, res) => {
 	const id = '"' + req.body.id + '"';
@@ -34,14 +37,21 @@ router.post("/songs", jsonParser, (req, res) => {
 
 router.post("/groups",jsonParser, (req, res) => {
     const groupName = '"' + req.body.groupName + '"';
-    const userEmail = '"' + req.body.userEmail + '"';
-    let emails = []
-    emails = req.body.emails;
-    var addToGroups = `INSERT INTO socialshazam.Groups (groupName, userEmail) VALUES (${groupName},${userEmail})`;
+    const userEmail = req.body.userEmail;
+    const admin = req.body.admin;
+    console.log(groupName);
+    console.log(userEmail);
+    console.log(admin);
+    let emails = userEmail.split(',').map(function(item) {
+      return item.trim();
+    });
+    var adminEmail = '"' + req.body.admin + '"';
+    var addToGroups = `INSERT INTO socialshazam.Groups (groupName, userEmail) VALUES (${groupName},${adminEmail})`;
+    console.log(addToGroups);
     connection.query(addToGroups, function (err, result) {
         if (err) throw err;
       });
-      emails.push(req.body.userEmail);
+      emails.push(admin);
       emails.forEach(element => {
           const ele = '"' + element + '"';
         var addToUserInGroup = `INSERT INTO usersInGroup (groupId, userEmail) VALUES (LAST_INSERT_ID(),${ele})`;

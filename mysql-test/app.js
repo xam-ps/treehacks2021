@@ -23,9 +23,9 @@ var defaultOptions = {
   signature_version: "1",
   data_type: "audio",
   secure: true,
-  access_key: ACCESS_KEY,
-  access_secret: ACCESS_SECRET,
-  host: HOST,
+  access_key: '98f751a363f90b3c508d37058a37244c',
+  access_secret: 'GEIyDGb0kkl1TZ3zmVKMbxl7ScYcvqi4HODUjOxw',
+  host: 'identify-us-west-2.acrcloud.com',
 };
 
 function buildStringToSign(
