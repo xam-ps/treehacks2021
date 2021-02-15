@@ -39,6 +39,7 @@ const SongHistory = (props) => {
           renderItem={(item) => (
             <div>
               <h3>{item.title}</h3>
+              <hr/>
             </div>
           )}
         />
