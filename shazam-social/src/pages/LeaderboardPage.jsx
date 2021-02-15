@@ -8,19 +8,19 @@ import styles from "./PlaylistPage.module.scss";
 
 const data = [
   {
-    name: "Friend 1",
+    name: "Elon",
     score: 941,
     avatar: avatarJpg,
   },
   {
-    name: "Friend 2",
+    name: "Bill",
     score: 745,
-    avatar: avatarJpg,
+    avatar: null,
   },
   {
     name: "Long Name - there is always one friend with a really long name",
     score: 569,
-    avatar: avatarJpg,
+    avatar: null,
   },
 ];
 
