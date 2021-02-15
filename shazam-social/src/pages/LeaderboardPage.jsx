@@ -1,13 +1,10 @@
-import { Button, List, Avatar } from "antd";
+import { List } from "antd";
 import React from "react";
-import { useHistory } from "react-router-dom";
-import CenteredContentWrapper from "../modules/CenteredContentWrapper";
-import PlaylistEntry from "../modules/PlaylistEntry";
-import styles from "./PlaylistPage.module.scss";
-import albumCoverJpg from "../assets/img/cover.jpg";
 import avatarJpg from "../assets/img/avatar.jpg";
-import Navigation from "../modules/Navigation";
+import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 import LeaderboardEntry from "../modules/LeaderboardEntry";
+import Navigation from "../modules/Navigation";
+import styles from "./PlaylistPage.module.scss";
 
 const data = [
   {
@@ -24,14 +21,14 @@ const data = [
     name: "Long Name - there is always one friend with a really long name",
     score: 569,
     avatar: avatarJpg,
-  }
+  },
 ];
 
 const LeaderboardPage = () => {
   return (
     <div className={styles.PlaylistPage}>
       <CenteredContentWrapper fullscreen={true}>
-        <h1> Shared Playlist </h1>
+        <h1> LEADERBOARD </h1>
         <div className={styles.scrollContainer}>
           <List
             itemLayout="horizontal"

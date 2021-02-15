@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "./Navigation.module.scss";
-import { useHistory } from "react-router";
 import { Button } from "antd";
-import notificationSvg from "../assets/img/notification.svg";
-import playlistSvg from "../assets/img/playlist.svg";
+import React from "react";
+import { useHistory } from "react-router";
 import discoverySvg from "../assets/img/discovery.svg";
 import leaderboardSvg from "../assets/img/leaderboard.svg";
+import notificationSvg from "../assets/img/notification.svg";
+import playlistSvg from "../assets/img/playlist.svg";
+import styles from "./Navigation.module.scss";
 
 const Navigation = () => {
   const history = useHistory();

@@ -1,18 +1,16 @@
 import React from "react";
-import "./App.scss";
 import {
 	BrowserRouter as Router,
-	Route,
-	Link,
-	Switch,
-	BrowserRouter,
+	Route
 } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import LandingPage from "./pages/LandingPage";
+import "./App.scss";
 import DashboardPage from "./pages/DashboardPage";
-import PlaylistPage from "./pages/PlaylistPage";
+import LandingPage from "./pages/LandingPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
+import LoginPage from "./pages/LoginPage";
+import PlaylistPage from "./pages/PlaylistPage";
 import PrivateRoute from "./PrivateRoute";
+
 export default function App() {
 	return (
 		<Router>

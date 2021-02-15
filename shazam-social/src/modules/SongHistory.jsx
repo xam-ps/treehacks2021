@@ -1,43 +1,23 @@
-import React from "react";
-import styles from "./SongHistory.module.scss";
-import closeSvg from "../assets/img/close.svg";
-import albumCoverJpg from "../assets/img/cover.jpg";
-import avatarJpg from "../assets/img/avatar.jpg";
 import { List } from "antd";
 import firebase from "firebase";
-import  { useEffect, useState } from "react";
-
-const data = [
-  {
-    title: "Jungle",
-    artist: "Tash Sultana",
-    firstDate: "01/12/2021",
-    avatar: avatarJpg,
-    imgSrc: albumCoverJpg,
-  },
-  {
-    title: "Test",
-    artist: "Tash Sultana",
-    firstDate: "01/12/2021",
-    avatar: avatarJpg,
-    imgSrc: albumCoverJpg,
-  },
-];
+import React, { useEffect, useState } from "react";
+import avatarJpg from "../assets/img/avatar.jpg";
+import closeSvg from "../assets/img/close.svg";
+import albumCoverJpg from "../assets/img/cover.jpg";
+import styles from "./SongHistory.module.scss";
 
 const SongHistory = (props) => {
   const [data, setData] = useState([]);
 
-  useEffect(async ()=> {
+  useEffect(async () => {
     const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com";
-    let email =  firebase.auth().currentUser.email;
+    let email = firebase.auth().currentUser.email;
     const response = await fetch(`${baseDomainDB}/getUserSongs/${email}`, {
-      method: "GET"
+      method: "GET",
     });
     const data = await response.json();
     setData(data);
-  },
-  [] )
-
+  }, []);
 
   return (
     <div className={styles.songList}>
@@ -51,12 +31,18 @@ const SongHistory = (props) => {
         />
       </div>
       <h2>My History</h2>
-      <List
-        itemLayout="horizontal"
-        size="large"
-        dataSource={data}
-        renderItem={(item) => <div><h3>{item.title}</h3></div>}
-      />
+      <div className={styles.songs}>
+        <List
+          itemLayout="horizontal"
+          size="large"
+          dataSource={data}
+          renderItem={(item) => (
+            <div>
+              <h3>{item.title}</h3>
+            </div>
+          )}
+        />
+      </div>
     </div>
   );
 };

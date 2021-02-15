@@ -1,8 +1,8 @@
-import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
+import Avatar from "antd/lib/avatar/avatar";
 import React from "react";
-import styles from "./PlaylistEntry.module.scss";
 import coverPlaceholderPng from "../assets/img/coverPlaceholder.png";
+import styles from "./PlaylistEntry.module.scss";
 
 const PlaylistEntry = (props) => {
   return (

@@ -1,10 +1,10 @@
+import { Button } from "antd";
 import React from "react";
-import CenteredContentWrapper from "../modules/CenteredContentWrapper";
+import { useHistory } from "react-router";
 import logoSvg from "../assets/img/logo.svg";
 import SoMuDiSvg from "../assets/img/SocialMusicDiscovery.svg";
+import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 import styles from "./LandingPage.module.scss";
-import { Button } from "antd";
-import { useHistory } from "react-router";
 
 const LandingPage = () => {
   const history = useHistory();

@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
-import { Route, Redirect } from "react-router-dom";
 import firebase from "firebase";
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     return (

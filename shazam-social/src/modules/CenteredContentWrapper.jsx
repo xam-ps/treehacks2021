@@ -1,16 +1,16 @@
-import React from 'react';
-import styles from './CenteredContentWrapper.module.scss';
+import React from "react";
+import styles from "./CenteredContentWrapper.module.scss";
 
 class CenteredContentWrapper extends React.Component {
   static defaultProps = {
     maxWidth: 560,
-    fullscreen: false
+    fullscreen: false,
   };
 
   render() {
-    let heightVal = 'auto';
-    if(this.props.fullscreen){
-      heightVal = 'calc(100% - 16px)'
+    let heightVal = "auto";
+    if (this.props.fullscreen) {
+      heightVal = "calc(100% - 16px)";
     }
 
     const centeredMaxWith = {
@@ -18,12 +18,14 @@ class CenteredContentWrapper extends React.Component {
     };
 
     const fullHeight = {
-      height: heightVal
-    }
+      height: heightVal,
+    };
 
     return (
       <div className={styles.centered} style={fullHeight}>
-        <div style={{...centeredMaxWith, ...fullHeight}}>{this.props.children}</div>
+        <div style={{ ...centeredMaxWith, ...fullHeight }}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

@@ -1,14 +1,14 @@
-import CenteredContentWrapper from "../modules/CenteredContentWrapper";
-import React, { Component } from "react";
 import firebase from "firebase";
+import React, { Component } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { Redirect } from "react-router-dom";
+import CenteredContentWrapper from "../modules/CenteredContentWrapper";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAQhqI_yrQR6-tZwRigGODOOOtFzvVxE7I",
   authDomain: "shazamsocial12.firebaseapp.com",
 });
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 class LoginPage extends Component {
   state = { isSignedIn: false };

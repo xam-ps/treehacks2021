@@ -1,5 +1,5 @@
-import Avatar from "antd/lib/avatar/avatar";
 import { UserOutlined } from "@ant-design/icons";
+import Avatar from "antd/lib/avatar/avatar";
 import React from "react";
 import styles from "./LeaderboardEntry.module.scss";
 

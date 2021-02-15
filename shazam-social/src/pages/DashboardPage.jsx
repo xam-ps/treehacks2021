@@ -1,18 +1,18 @@
+import { UserOutlined } from "@ant-design/icons";
+import Avatar from "antd/lib/avatar/avatar";
+import firebase from "firebase";
+import MicRecorder from "mic-recorder-to-mp3";
 import React, { Component } from "react";
-import CenteredContentWrapper from "../modules/CenteredContentWrapper";
-import styles from "./DashboardPage.module.scss";
 import recordSvg from "../assets/img/audio.svg";
-import startRecordingSvg from "../assets/img/soundwave.svg";
 import groupSvg from "../assets/img/group.svg";
 import historySvg from "../assets/img/history.svg";
+import startRecordingSvg from "../assets/img/soundwave.svg";
+import CenteredContentWrapper from "../modules/CenteredContentWrapper";
+import CreateGroup from "../modules/CreateGroup";
 import Navigation from "../modules/Navigation";
-import MicRecorder from "mic-recorder-to-mp3";
-import firebase from "firebase";
-import Avatar from "antd/lib/avatar/avatar";
-import { UserOutlined } from "@ant-design/icons";
 import RecognizedSong from "../modules/RecognizedSong";
 import SongHistory from "../modules/SongHistory";
-import CreateGroup from "../modules/CreateGroup";
+import styles from "./DashboardPage.module.scss";
 
 const baseDomain = "https://us-central1-treehacks2021.cloudfunctions.net/song";
 const baseDomainDB = "https://shazamsocial12.wl.r.appspot.com";
@@ -46,7 +46,7 @@ class DashboardPage extends Component {
     return (
       <div className={styles.DashboardPage}>
         <CenteredContentWrapper fullscreen={true}>
-          <h1> Discover </h1>
+          <h1> DISCOVER </h1>
           {this.state.isModalOpen ? (
             <RecognizedSong
               data={this.song}
@@ -169,7 +169,7 @@ class DashboardPage extends Component {
           console.log(resJson);
           this.song = resJson;
           this.setState({ isModalOpen: true });
-          try{
+          try {
             const responseStoreSong = await fetch(`${baseDomainDB}/songs/`, {
               method: "POST",
               headers: {
@@ -177,7 +177,7 @@ class DashboardPage extends Component {
               },
               body: JSON.stringify(resJson),
             });
-          }catch(e){
+          } catch (e) {
             console.log(e);
           }
         })
